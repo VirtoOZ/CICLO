@@ -45,7 +45,14 @@
 }
 
 // Адаптивное свойство (clamp)
-@mixin adaptiveValue($property, $startSize, $minSize, $widthFrom: $containerWidth, $widthTo: $minWidth, $keepSize: 0) {
+@mixin adaptiveValue(
+	$property,
+	$startSize,
+	$minSize,
+	$widthFrom: #{containerWidth},
+	$widthTo: #{minWidth},
+	$keepSize: 0
+) {
 	@if ($startSize==0) {
 		$startSize: 0.000001;
 	}
@@ -56,8 +63,8 @@
 	// Для calc();
 	$addSize: math.div($startSize - $minSize, 16);
 
-	@if ($widthFrom == $containerWidth and $maxWidthContainer == 0) {
-		$widthFrom: $maxWidth;
+	@if ($widthFrom == #{containerWidth} and #{maxWidthContainer} == 0) {
+		$widthFrom: #{maxWidth};
 	}
 
 	// Брейк-поинты в EM
@@ -71,25 +78,25 @@
 	@if ($yIntersection==0) {
 		$yIntersection: 0.000001;
 	}
-	$flyValue: #{rem($yIntersection)}" + " #{$slope * 100}vw;
+	$flyValue: rem($yIntersection) " + " $slope * 100vw;
 
 	// Получение значения свойства
-	$propertyValue: #{"clamp(" rem($minSize) "," $flyValue "," rem($startSize) ")"};
+	$propertyValue: "clamp(" rem($minSize) "," $flyValue "," rem($startSize) ")";
 	// Если отрицательные значения
 	@if ($minSize > $startSize) {
-		$propertyValue: #{"clamp(" rem($startSize) "," $flyValue "," rem($minSize) ")"};
+		$propertyValue: "clamp(" rem($startSize) "," $flyValue "," rem($minSize) ")";
 	}
 
 	// Устанавливаем значения по умолчанию
 	@if $keepSize != 1 and $keepSize != 3 {
 		@media (min-width: $widthFromMedia) {
-			#{$property}: rem($startSize);
+			$property: rem($startSize);
 		}
 	}
 	// Адаптируем размер в промежутке между указанными ширинами вьюпорта
 	@media (min-width: $widthToMedia) and (max-width: $widthFromMedia) {
 		// Если поддерживается clamp();
-		@supports (#{$property}: $propertyValue) {
+		@supports ($property: $propertyValue) {
 			#{$property}: $propertyValue;
 		}
 		// Если не поддерживается clamp();
