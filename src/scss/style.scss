@@ -1,28 +1,20 @@
 // <IMPORT>=================================
-// глобальных переменных, миксинов и функций
 @use "sass:math"; //модуль Math
 // Подключение главного файла миксина в глобальную область видимости
-@use "base/mixins" as *;
-@use "base"; // Для подключения/отключения конкретных стилей смотри base.scss
-@use "common"; // Подключение стилей общих элементов проекта
-// Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
-@use "header";
-@use "footer";
-// Подключение стилей отдельных страниц
-// @import "home";
+//<MIXINS>=================================
+@import "base/mixins";
+//</MIXINS>=================================
 
 // <ШРИФТ>=================================
 //&display=swap - добавить при подключении через плагин
 // @import url(https://fonts.googleapis.com/css?family=Montserrat:300,400,600,700&display=swap);
-@use "fonts/fonts"; // Подключить если есть локальные файлы шрифтов
-@use "fonts/icons"; // Подключить если есть файл иконочного шрифта
+@import "fonts/fonts"; // Подключить если есть локальные файлы шрифтов
+@import "fonts/icons"; // Подключить если есть файл иконочного шрифта
 // </ШРИФТ></IMPORT>=================================
 
 // <VARIABLES>=================================
-// Шрифт по умолчанию
 $fontFamily: "Quicksand";
-$fontSize: rem(25); // где 14(px) - размер шрифта по умолчанию из макета
-
+$fontSize: px-rem(25); // где 14(px) - размер шрифта по умолчанию из макета
 // Основные цвета
 $mainTextColor: #6a6e77; // Цвет шрифта по умолчанию
 $accentTextColor: #85d8ce;
@@ -30,7 +22,9 @@ $darkColor: #1c1f25;
 $mainBgColor: #c4c4c4;
 
 // Настройки адаптивной сетки
+
 $minWidth: 320; // Минимальная ширина страницы
+// @debug "$minWidth: #{$minWidth}";
 $maxWidth: 1920; // Ширина полотна (макета)
 $maxWidthContainer: 0; // Ширина ограничивающего контейнера (0 = нет ограничения)
 // Общий отступ у контейнера
@@ -40,10 +34,10 @@ $containerPaddingMin: 15; // минимальный отступ
 $containerWidth: $maxWidthContainer + $containerPadding;
 
 // Брейк-поинты
-$pc: em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
-$tablet: em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
-$mobile: em(767.98); // Телефоны L
-$mobileSmall: em(479.98); // Телефоны S
+$pc: px-em($containerWidth); // ПК, ноутбуки, некоторые планшеты в горизонтальном положении
+$tablet: px-em(991.98); // Планшеты, некоторые телефоны в горизонтальном положении
+$mobile: px-em(767.98); // Телефоны L
+$mobileSmall: px-em(479.98); // Телефоны S
 
 // Тип адаптива:
 // 1 = отзывчивость (у контейнера нет брейкпоинтов),
@@ -51,11 +45,14 @@ $mobileSmall: em(479.98); // Телефоны S
 $responsiveType: 1;
 // </VARIABLES>=================================
 
+// <ОБНУЛЕНИЕ>=================================
+@import "base/null";
+// </ОБНУЛЕНИЕ>=================================
+
 // <BODY>=================================
 body {
 	background: $mainBgColor;
 	font-weight: 400;
-	color: $mainTextColor;
 	line-height: math.div(28, 20);
 	// Скролл заблокирован
 	.lock & {
@@ -88,22 +85,23 @@ body {
 
 // <CONTAINER>=================================
 /*
-(i) Стили будут применяться ко
+(i) Стили будут применяться ко 
 всем классам содержащим *__container
 Например header__container, main__container и т.д.
 Снипет (HTML): cnt
+
 */
 @if ($responsiveType==1) {
 	// Отзывчивая
 	[class*="__container"] {
 		@if ($maxWidthContainer>0) {
-			max-width: rem($maxWidthContainer);
+			max-width: px-rem($containerWidth);
 			box-sizing: content-box;
 			margin: 0 auto;
 		}
 		@if ($containerPadding>0) {
 			@if ($maxWidthContainer>0) {
-				padding: 0 rem(math.div($containerPadding, 2));
+				padding: 0 px-rem(math.div($containerPadding, 2));
 			} @else {
 				@include adaptiveValue("padding-left", math.div($containerPadding, 2), $containerPaddingMin);
 				@include adaptiveValue("padding-right", math.div($containerPadding, 2), $containerPaddingMin);
@@ -115,36 +113,47 @@ body {
 	[class*="__container"] {
 		margin: 0 auto;
 		@if ($maxWidthContainer>0) {
-			max-width: rem($maxWidthContainer);
+			max-width: px-rem($maxWidthContainer);
 			box-sizing: content-box;
 		} @else {
 			@if ($containerPadding>0) {
-				padding: 0 rem(math.div($containerPadding, 2));
+				padding: 0 px-rem(math.div($containerPadding, 2));
 			}
 		}
 		@media (max-width: $pc) {
-			max-width: rem(970);
+			max-width: px-rem(970);
 		}
 		@media (max-width: $tablet) {
-			max-width: rem(750);
+			max-width: px-rem(750);
 		}
 		@media (max-width: $mobile) {
 			max-width: none;
 			@if ($containerPadding>0 and $maxWidthContainer>0) {
-				padding: 0 rem(math.div($containerPadding, 2));
+				padding: 0 px-rem(math.div($containerPadding, 2));
 			}
 		}
 	}
 }
 // </CONTAINER>=================================
 
+// <IMPORT>=================================
+// Подключение базовых стилей, шаблонов (заготовок) и вспомогательных  классов
+// Для подключения/отключения конкретных стилей смотри base.scss
+@import "base";
+@import "common"; // Подключение стилей общих элементов проекта
 // Подключение стилей отдельных блоков
+@import "header";
+@import "footer";
+// Подключение стилей отдельных страниц
+// @import "home";
+// </IMPORT>=================================
+
 .page {
 	// .page__container
 	&__container {
 	}
 	// .page__text
 	&__text {
-		font-size: $fontSize;
+		@include adaptiveValue("font-size", 40, 20);
 	}
 }

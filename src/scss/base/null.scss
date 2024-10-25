@@ -24,7 +24,7 @@ body {
 body {
 	color: $mainTextColor;
 	line-height: 1;
-	font-family: $fontFamily;
+	//font-family: $fontFamily;
 	font-size: $fontSize;
 	//text-rendering: optimizeLegibility;
 	-ms-text-size-adjust: 100%;
@@ -36,7 +36,7 @@ body {
 input,
 button,
 textarea {
-	font-family: $fontFamily;
+	//font-family: $fontFamily;
 	font-size: inherit;
 }
 button {

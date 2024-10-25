@@ -1,65 +1,103 @@
-//<IMPORT>=глобальных переменных, миксинов и функций
-@use "base/mixins" as *;
-//</IMPORT>=================================
-
 //====================================================================================================
 .header {
+
+   // .header__container
+
+   &__container {
+      height:100vh;
+   }
+
+   // .header__title
+
+   &__title {
+   }
 }
-//====================================================================================================
+.main {
 
-//Burger
-.burger {
-	display: none;
-	@media (max-width: #{tablet}) {
-		display: block;
-		position: relative;
-		width: rem(30);
-		height: rem(18);
-		cursor: pointer;
-		z-index: 2;
+   // .main_image
 
-		span,
-		&::before,
-		&::after {
-			content: "";
-			transition: all 0.3s ease 0s;
-			right: 0;
-			position: absolute;
-			width: 100%;
-			height: rem(2);
-			background-color: #{mainTextColor};
-		}
+   &_image img{
+      //display: none;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      position:absolute;
+      z-index: -1;
+   }
+}
+.title {
+   position: relative;
+   //display: inline-flex;
+   width: 320px;
+   margin: 0px auto;
+   top:60vh;
+   
+   //font-size: 90px;
+   text-align: center;
+   line-height: 120%;
+   animation: screensaver 5s ease forwards;
+   color:black;
+   //font-size: calc(80px + 16 * (100vw / 1280));
+   &_first {
+      margin-left: calc(50px - 8 * (100vw / 1440));
+      //position: absolute;
 
-		&::before {
-			top: 0;
-		}
+   }
 
-		&::after {
-			bottom: 0;
-		}
+   // .title_second
+   &_second{
+      left:20px;
+      position: relative;
+      display:inline-block;
+           
+      //width:400px;
+   }
+   &_second::before{
+      content: " ";
+      position: absolute;
+      top:50%;
+      right:80px;
+      background-color: black;
+      width: 400%;
+      height: 2px;
+   }
+   &_second::after{
+      content: " ";
+      position: absolute;
+      top:50%;
+      left:80px;
+      background-color: black;
+      width: 400%;
+      height: 2px;
+   }
+   // .title_three
 
-		span {
-			top: calc(50% - rem(1));
-		}
-
-		.menu-open & {
-			span {
-				width: 0;
-			}
-
-			&::before,
-			&::after {
-			}
-
-			&::before {
-				top: calc(50% - rem(1));
-				transform: rotate(-45deg);
-			}
-
-			&::after {
-				bottom: calc(50% - rem(1));
-				transform: rotate(45deg);
-			}
-		}
-	}
+   &_three {
+      //margin-left: -40px;
+   }
+}
+@media (max-width:980px) {
+   .title{
+      top:10vh;
+      &_second{
+         left:0;
+      }
+      
+   }
+   
+};
+@keyframes screensaver {
+   from {
+      line-height: 100%;
+      font-size: calc(30px + 30 * (100vw / 1440));
+      letter-spacing: 90%;
+      opacity: 0;
+   }
+   to {
+      //transform: translate(-100px);
+      line-height: 120%;
+      font-size: calc(36px + 32 * (100vw / 1280));
+      letter-spacing: 0.5rem;
+      opacity: 1;
+   }
 }
