@@ -1,20 +1,28 @@
 <!DOCTYPE html>
 <html lang="ru">
 @@include('html/_head.htm',{
-"title":"Fix Global"
+"title":"CICLO"
 })
 
 <body>
 	<div class="wrapper">
 		@@include('html/_header.htm',{})
-		<main class="page">
-			<div class="page__container">
-				<h1 class="page__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam aliquid quibusdam voluptatum molestiae blanditiis facilis quo eligendi iure nihil numquam in non dolore, beatae deleniti eum debitis, laudantium quia. Laudantium!</h1>
-			</div>
+		<main data-fp data-fp-bullets class="page">
+			<section data-fp-section class="page__section page__section_center main">
+				<div class="main__container">
+					<div class="main__body">
+						<div class="main__section-header section-header section-header_lite">
+							<div class="section-header__text">Multipurpose Minimal Solution</div>
+							<h1 class="section-header__title">The simplest things are often the truest…</h1>
+						</div>
+						<img class="main__image" src="@img/main/image.jpg" alt="image.jpg">
+					</div>
+				</div>
+			</section>
+
 		</main>
 		@@include('html/_footer.htm',{})
 	</div>
-	@@include('html/_popup.htm',{})
 	@@include('html/_js.htm',{})
 </body>
 

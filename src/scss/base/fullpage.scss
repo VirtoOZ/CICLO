@@ -48,7 +48,9 @@ body {
 		transition: transform 0.7s cubic-bezier(0.55, 0.085, 0, 0.99) 0s;
 	}
 	.fp-init .fade-mode & {
-		transition: opacity 0.5s ease-in-out 0s, visibility 0.5s ease-in-out 0s;
+		transition:
+			opacity 0.5s ease-in-out 0s,
+			visibility 0.5s ease-in-out 0s;
 	}
 }
 
@@ -56,8 +58,8 @@ body {
 .fp-bullets {
 	position: fixed;
 	top: 50%;
+	@include adaptiveValue("left", 120, 7.5);
 	transform: translate(0, -50%);
-	right: rem(40);
 	max-height: 100%;
 	display: flex;
 	flex-direction: column;
@@ -80,15 +82,12 @@ body {
 	// Буллет
 	& .fp-bullet {
 		cursor: pointer;
-		width: rem(20);
-		height: rem(20);
-		flex: 0 0 rem(20);
-		border-radius: rem(10);
-		background-color: #100c46;
-		box-shadow: rem(0) rem(0) rem(3) #6257fe, 0 0 rem(30) rgba(255, 255, 255, 0.8);
-		border: rem(1) solid #fff;
-		opacity: 0.6;
-		transition: transform 0.4s ease-in-out 0s, opacity 0.4s ease-in-out 0s, background-color 0.4s ease-in-out 0s, box-shadow 0.4s ease-in-out 0s;
+		width: rem(5);
+		height: rem(35);
+		flex: 0 0 rem(35);
+		background-color: #000;
+		opacity: 0.2;
+		transition: opacity 0.3s ease 0s;
 		@media (any-hover: hover) {
 			&:hover {
 				opacity: 1;
@@ -98,8 +97,5 @@ body {
 
 	& .fp-bullet-active {
 		opacity: 1;
-		background-color: #6257fe;
-		transform: translate3D(rem(-5), rem(-2), 0);
-		box-shadow: rem(5) rem(2) rem(3) #100c46, 0 0 rem(30) rgba(255, 255, 255, 0.8);
 	}
 }
