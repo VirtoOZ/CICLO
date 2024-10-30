@@ -460,6 +460,9 @@ body {
 }
 
 .screen-03__image img {
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
   max-width: 100%;
 }
 
@@ -916,6 +919,12 @@ body {
     -webkit-box-pack: center;
         -ms-flex-pack: center;
             justify-content: center;
+  }
+
+  .screen-03__image {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
   }
 
   .screen-04__container {
