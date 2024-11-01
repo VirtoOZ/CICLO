@@ -369,7 +369,6 @@ body {
 
 .page__section::after {
   position: absolute;
-  top: 50%;
   -webkit-transform: translate(50%, -50%);
       -ms-transform: translate(50%, -50%);
           transform: translate(50%, -50%);
@@ -543,14 +542,13 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding-top: 3.125rem;
 }
 
 .screen-05__content {
   -webkit-box-flex: 0;
       -ms-flex: 0 1 50%;
           flex: 0 1 50%;
-  padding-top: 2.5rem;
-  padding-bottom: 2.5rem;
 }
 
 .screen-05__images {
