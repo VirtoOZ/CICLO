@@ -363,6 +363,7 @@ body {
 }
 
 .page {
+  position: relative;
   counter-reset: item;
 }
 
@@ -374,8 +375,8 @@ body {
           transform: translate(50%, -50%);
   font-weight: 700;
   color: #e3e6ec;
-  content: counter(item, decimal-leading-zero);
   counter-increment: item;
+  content: counter(item, decimal-leading-zero);
 }
 
 .screen-01__body {
@@ -645,6 +646,10 @@ body {
     height: 1.5625rem;
   }
 
+  .page__section::after {
+    right: 7.5rem;
+  }
+
   .screen-03__image {
     margin-left: -15rem;
   }
@@ -679,10 +684,6 @@ body {
 
   .section-header__title {
     font-size: 3.75rem;
-  }
-
-  .page__section::after {
-    right: 7.5rem;
   }
 
   .page__section::after {
@@ -777,10 +778,6 @@ body {
 
   .section-header__title {
     font-size: 1.875rem;
-  }
-
-  .page__section::after {
-    right: 0.46875rem;
   }
 
   .page__section::after {
@@ -1041,18 +1038,6 @@ body {
     }
 }
 
-@supports (right: clamp( 0.46875rem , -0.9375rem  +  7.03125vw , 7.5rem )) {
-    .page__section::after {
-      right: clamp( 0.46875rem , -0.9375rem  +  7.03125vw , 7.5rem );
-    }
-}
-
-@supports not (right: clamp( 0.46875rem , -0.9375rem  +  7.03125vw , 7.5rem )) {
-    .page__section::after {
-      right: calc(0.46875rem + 7.03125*(100vw - 20rem)/100);
-    }
-}
-
 @supports (font-size: clamp( 1.5625rem , 1.125rem  +  2.1875vw , 3.75rem )) {
     .page__section::after {
       font-size: clamp( 1.5625rem , 1.125rem  +  2.1875vw , 3.75rem );
@@ -1285,6 +1270,18 @@ body {
     }
 }
 
+@supports (right: clamp( 0.46875rem , -0.9375rem  +  7.03125vw , 7.5rem )) {
+    .page__section::after {
+      right: clamp( 0.46875rem , -0.9375rem  +  7.03125vw , 7.5rem );
+    }
+}
+
+@supports not (right: clamp( 0.46875rem , -0.9375rem  +  7.03125vw , 7.5rem )) {
+    .page__section::after {
+      right: calc(0.46875rem + 7.03125*(100vw - 20rem)/100);
+    }
+}
+
 @supports (margin-left: clamp( -15rem , 1.875rem  +  -14.0625vw , -0.9375rem )) {
     .screen-03__image {
       margin-left: clamp( -15rem , 1.875rem  +  -14.0625vw , -0.9375rem );
@@ -1306,6 +1303,10 @@ body {
 
   .fp-bullets .fp-bullet {
     height: 0.9375rem;
+  }
+
+  .page__section::after {
+    right: 0.46875rem;
   }
 
   .screen-03__image {
