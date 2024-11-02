@@ -37,43 +37,11 @@
   display: block;
 }
 
-._icon-fb:before {
-  content: "";
-}
-
-._icon-inst:before {
-  content: "";
-}
-
-._icon-tg:before {
-  content: "";
-}
-
-._icon-triangle:before {
-  content: "";
-}
-
-._icon-yt:before {
-  content: "";
-}
-
-._icon-check:before {
-  content: "";
-}
-
-._icon-tt:before {
-  content: "";
-}
-
-._icon-in:before {
-  content: "";
-}
-
 ._icon-checked_laptop:before {
   content: "";
 }
 
-._icon-telegram_app:before {
+._icon-cloud:before {
   content: "";
 }
 
@@ -81,16 +49,12 @@
   content: "";
 }
 
-._icon-link:before {
+._icon-telegram_app:before {
   content: "";
 }
 
-._icon-cloud:before {
+._icon-link:before {
   content: "";
-}
-
-._icon-face_id:before {
-  content: "";
 }
 
 * {
@@ -168,7 +132,6 @@ h6 {
 }
 
 body {
-  background: #c4c4c4;
   font-weight: 400;
   line-height: 1.4;
 }
@@ -568,13 +531,62 @@ body {
 }
 
 .screen-05__image {
-  -webkit-box-flex: 1;
-      -ms-flex: 1 1 auto;
-          flex: 1 1 auto;
+  position: relative;
+  padding-bottom: 75%;
 }
 
 .screen-05__image img {
-  max-width: 100%;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.screen-06__container {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.screen-06__content {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
+}
+
+.screen-06__section-header {
+  margin-bottom: 1.875rem;
+}
+
+.screen-06__services {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 50%;
+          flex: 0 1 50%;
+}
+
+.services__icon:not(:last-child) {
+  margin-bottom: 0.8666666667em;
+}
+
+.services__icon::before {
+  color: #1c1f25;
+}
+
+.services__label {
+  line-height: 1.2666666667;
+  font-weight: 700;
+  color: #1c1f25;
+}
+
+.services__label:not(:last-child) {
+  margin-bottom: 0.8666666667em;
+}
+
+.services__text {
+  line-height: 1.8;
 }
 
 @media (min-width: 47.99875em) {
@@ -632,6 +644,15 @@ body {
   .screen-05__content {
     padding-right: 1.25rem;
   }
+
+  .services__item {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
 }
 
 @media (min-width: 47.99875em)and (min-width: 120em) {
@@ -650,6 +671,10 @@ body {
 
   .screen-03__image {
     margin-left: -15rem;
+  }
+
+  .services__icon {
+    margin-right: 3.4375rem;
   }
 }
 
@@ -751,6 +776,26 @@ body {
   .advantages__text {
     font-size: 1.5625rem;
   }
+
+  .services__item:not(:last-child) {
+    margin-bottom: 1.875rem;
+  }
+
+  .services__icon:not(:last-child) {
+    margin-bottom: 1.625rem;
+  }
+
+  .services__icon::before {
+    font-size: 2.8125rem;
+  }
+
+  .services__label {
+    font-size: 1.875rem;
+  }
+
+  .services__text {
+    font-size: 1.5625rem;
+  }
 }
 
 @media (max-width: 20em) {
@@ -845,6 +890,26 @@ body {
   .advantages__text {
     font-size: 1.125rem;
   }
+
+  .services__item:not(:last-child) {
+    margin-bottom: 1.25rem;
+  }
+
+  .services__icon:not(:last-child) {
+    margin-bottom: 1.125rem;
+  }
+
+  .services__icon::before {
+    font-size: 1.875rem;
+  }
+
+  .services__label {
+    font-size: 1.25rem;
+  }
+
+  .services__text {
+    font-size: 1.125rem;
+  }
 }
 
 @media (max-width: 47.99875em) {
@@ -934,6 +999,12 @@ body {
   .screen-05__container {
     display: block;
     padding-top: 3.125rem;
+  }
+
+  .screen-06__container {
+    display: block;
+    padding-top: 3.125rem;
+    padding-bottom: 3.125rem;
   }
 }
 
@@ -1240,6 +1311,66 @@ body {
       font-size: calc(1.125rem + 0.4375*(100vw - 20rem)/100);
     }
 }
+
+@supports (margin-bottom: clamp( 1.25rem , 1.125rem  +  0.625vw , 1.875rem )) {
+    .services__item:not(:last-child) {
+      margin-bottom: clamp( 1.25rem , 1.125rem  +  0.625vw , 1.875rem );
+    }
+}
+
+@supports not (margin-bottom: clamp( 1.25rem , 1.125rem  +  0.625vw , 1.875rem )) {
+    .services__item:not(:last-child) {
+      margin-bottom: calc(1.25rem + 0.625*(100vw - 20rem)/100);
+    }
+}
+
+@supports (margin-bottom: clamp( 1.125rem , 1.025rem  +  0.5vw , 1.625rem )) {
+    .services__icon:not(:last-child) {
+      margin-bottom: clamp( 1.125rem , 1.025rem  +  0.5vw , 1.625rem );
+    }
+}
+
+@supports not (margin-bottom: clamp( 1.125rem , 1.025rem  +  0.5vw , 1.625rem )) {
+    .services__icon:not(:last-child) {
+      margin-bottom: calc(1.125rem + 0.5*(100vw - 20rem)/100);
+    }
+}
+
+@supports (font-size: clamp( 1.875rem , 1.6875rem  +  0.9375vw , 2.8125rem )) {
+    .services__icon::before {
+      font-size: clamp( 1.875rem , 1.6875rem  +  0.9375vw , 2.8125rem );
+    }
+}
+
+@supports not (font-size: clamp( 1.875rem , 1.6875rem  +  0.9375vw , 2.8125rem )) {
+    .services__icon::before {
+      font-size: calc(1.875rem + 0.9375*(100vw - 20rem)/100);
+    }
+}
+
+@supports (font-size: clamp( 1.25rem , 1.125rem  +  0.625vw , 1.875rem )) {
+    .services__label {
+      font-size: clamp( 1.25rem , 1.125rem  +  0.625vw , 1.875rem );
+    }
+}
+
+@supports not (font-size: clamp( 1.25rem , 1.125rem  +  0.625vw , 1.875rem )) {
+    .services__label {
+      font-size: calc(1.25rem + 0.625*(100vw - 20rem)/100);
+    }
+}
+
+@supports (font-size: clamp( 1.125rem , 1.0375rem  +  0.4375vw , 1.5625rem )) {
+    .services__text {
+      font-size: clamp( 1.125rem , 1.0375rem  +  0.4375vw , 1.5625rem );
+    }
+}
+
+@supports not (font-size: clamp( 1.125rem , 1.0375rem  +  0.4375vw , 1.5625rem )) {
+    .services__text {
+      font-size: calc(1.125rem + 0.4375*(100vw - 20rem)/100);
+    }
+}
 }
 
 @media (min-width: 47.99875em)and (min-width: 20em)and (max-width: 120em) {
@@ -1292,6 +1423,18 @@ body {
       margin-left: calc(-0.9375rem + -14.0625*(100vw - 20rem)/100);
     }
 }
+
+@supports (margin-right: clamp( 1.25rem , 0.8125rem  +  2.1875vw , 3.4375rem )) {
+    .services__icon {
+      margin-right: clamp( 1.25rem , 0.8125rem  +  2.1875vw , 3.4375rem );
+    }
+}
+
+@supports not (margin-right: clamp( 1.25rem , 0.8125rem  +  2.1875vw , 3.4375rem )) {
+    .services__icon {
+      margin-right: calc(1.25rem + 2.1875*(100vw - 20rem)/100);
+    }
+}
 }
 
 @media (min-width: 47.99875em)and (max-width: 20em) {
@@ -1310,6 +1453,10 @@ body {
 
   .screen-03__image {
     margin-left: -0.9375rem;
+  }
+
+  .services__icon {
+    margin-right: 1.25rem;
   }
 }
 
