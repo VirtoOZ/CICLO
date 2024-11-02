@@ -543,7 +543,6 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  padding-top: 3.125rem;
 }
 
 .screen-05__content {
@@ -772,11 +771,11 @@ body {
   }
 
   .section-header__text {
-    font-size: 1rem;
+    font-size: 1.125rem;
   }
 
   .section-header__title {
-    font-size: 1.875rem;
+    font-size: 2.125rem;
   }
 
   .page__section::after {
@@ -934,6 +933,7 @@ body {
 
   .screen-05__container {
     display: block;
+    padding-top: 3.125rem;
   }
 }
 
@@ -1013,27 +1013,27 @@ body {
     }
 }
 
-@supports (font-size: clamp( 1rem , 0.8875rem  +  0.5625vw , 1.5625rem )) {
+@supports (font-size: clamp( 1.125rem , 1.0375rem  +  0.4375vw , 1.5625rem )) {
     .section-header__text {
-      font-size: clamp( 1rem , 0.8875rem  +  0.5625vw , 1.5625rem );
+      font-size: clamp( 1.125rem , 1.0375rem  +  0.4375vw , 1.5625rem );
     }
 }
 
-@supports not (font-size: clamp( 1rem , 0.8875rem  +  0.5625vw , 1.5625rem )) {
+@supports not (font-size: clamp( 1.125rem , 1.0375rem  +  0.4375vw , 1.5625rem )) {
     .section-header__text {
-      font-size: calc(1rem + 0.5625*(100vw - 20rem)/100);
+      font-size: calc(1.125rem + 0.4375*(100vw - 20rem)/100);
     }
 }
 
-@supports (font-size: clamp( 1.875rem , 1.5rem  +  1.875vw , 3.75rem )) {
+@supports (font-size: clamp( 2.125rem , 1.8rem  +  1.625vw , 3.75rem )) {
     .section-header__title {
-      font-size: clamp( 1.875rem , 1.5rem  +  1.875vw , 3.75rem );
+      font-size: clamp( 2.125rem , 1.8rem  +  1.625vw , 3.75rem );
     }
 }
 
-@supports not (font-size: clamp( 1.875rem , 1.5rem  +  1.875vw , 3.75rem )) {
+@supports not (font-size: clamp( 2.125rem , 1.8rem  +  1.625vw , 3.75rem )) {
     .section-header__title {
-      font-size: calc(1.875rem + 1.875*(100vw - 20rem)/100);
+      font-size: calc(2.125rem + 1.625*(100vw - 20rem)/100);
     }
 }
 
