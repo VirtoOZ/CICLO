@@ -1,4 +1,12 @@
 @font-face {
+  font-family: Quicksand;
+  font-display: swap;
+  src: url("../fonts/Quicksand-Regular.woff2") format("woff2"),url("../fonts/Quicksand-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
   font-family: icons;
   font-display: swap;
   src: url("../fonts/icons.woff2") format("woff2"),url("../fonts/icons.woff") format("woff");
@@ -11,14 +19,6 @@
   font-display: swap;
   src: url("../fonts/Quicksand-Bold.woff2") format("woff2"),url("../fonts/Quicksand-Bold.woff") format("woff");
   font-weight: 700;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Quicksand;
-  font-display: swap;
-  src: url("../fonts/Quicksand-Regular.woff2") format("woff2"),url("../fonts/Quicksand-Regular.woff") format("woff");
-  font-weight: 400;
   font-style: normal;
 }
 
@@ -37,28 +37,28 @@
   display: block;
 }
 
-._icon-face-id:before {
-  content: "";
+._icon-telegram-app:before {
+  content: "";
 }
 
-._icon-checked-laptop:before {
+._icon-face-id:before {
   content: "";
 }
 
 ._icon-cloud:before {
-  content: "";
-}
-
-._icon-idea:before {
   content: "";
 }
 
-._icon-telegram-app:before {
+._icon-checked-laptop:before {
   content: "";
 }
 
 ._icon-link:before {
   content: "";
+}
+
+._icon-idea:before {
+  content: "";
 }
 
 * {
@@ -146,6 +146,12 @@ body {
       touch-action: none;
   -ms-scroll-chaining: none;
       overscroll-behavior: none;
+}
+
+.loaded body {
+  -webkit-transition: opacity .8s ease 0s;
+  transition: opacity .8s ease 0s;
+  opacity: 1;
 }
 
 .wrapper {
@@ -291,10 +297,35 @@ body {
 .section-header__text {
   line-height: 1.8;
   max-width: 33.75rem;
+  -webkit-transition: all 1s ease .3s;
+  transition: all 1s ease .3s;
+  -webkit-transform: translate(0px, 6.25rem);
+      -ms-transform: translate(0px, 6.25rem);
+          transform: translate(0px, 6.25rem);
+  opacity: 0;
 }
 
 .section-header__text:not(:last-child) {
   margin-bottom: 0.9375em;
+}
+
+.active-section .section-header__text {
+  opacity: 1;
+  -webkit-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+.previous-section .section-header__text {
+  -webkit-transform: translate(0px, -6.25rem);
+      -ms-transform: translate(0px, -6.25rem);
+          transform: translate(0px, -6.25rem);
+}
+
+.next-section .section-header__text {
+  -webkit-transform: translate(0px, 6.25rem);
+      -ms-transform: translate(0px, 6.25rem);
+          transform: translate(0px, 6.25rem);
 }
 
 .section-header__title {
@@ -302,6 +333,12 @@ body {
   font-weight: 700;
   color: #1c1f25;
   max-width: 29.375rem;
+  -webkit-transition: all 1s;
+  transition: all 1s;
+  -webkit-transform: translate(0px, 6.25rem);
+      -ms-transform: translate(0px, 6.25rem);
+          transform: translate(0px, 6.25rem);
+  opacity: 0;
 }
 
 .section-header__title:not(:last-child) {
@@ -312,13 +349,57 @@ body {
   max-width: 55.625rem;
 }
 
+.active-section .section-header__title {
+  opacity: 1;
+  -webkit-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+.previous-section .section-header__title {
+  -webkit-transform: translate(0px, -12.5rem);
+      -ms-transform: translate(0px, -12.5rem);
+          transform: translate(0px, -12.5rem);
+}
+
+.next-section .section-header__title {
+  -webkit-transform: translate(0px, 12.5rem);
+      -ms-transform: translate(0px, 12.5rem);
+          transform: translate(0px, 12.5rem);
+}
+
 .section-header__label {
   line-height: 1.24;
   margin-bottom: 1.28em;
+  -webkit-transition: all 1s ease .2s;
+  transition: all 1s ease .2s;
+  -webkit-transform: translate(0px, 6.25rem);
+      -ms-transform: translate(0px, 6.25rem);
+          transform: translate(0px, 6.25rem);
+  opacity: 0;
 }
 
 .section-header__label:not(:last-child) {
   margin-bottom: 1.28em;
+}
+
+.active-section .section-header__label {
+  opacity: 1;
+  -webkit-transform: translate(0px, 0px);
+      -ms-transform: translate(0px, 0px);
+          transform: translate(0px, 0px);
+}
+
+.previous-section .section-header__label {
+  -webkit-transform: translate(0px, -6.25rem);
+      -ms-transform: translate(0px, -6.25rem);
+          transform: translate(0px, -6.25rem);
+}
+
+.next-section .section-header__label {
+  -webkit-transform: translate(0px, 6.25rem);
+      -ms-transform: translate(0px, 6.25rem);
+          transform: translate(0px, 6.25rem);
 }
 
 .section-header_lite .section-header__text {
@@ -331,6 +412,33 @@ body {
 
 .section-header__achievements {
   margin-top: 11.875rem;
+}
+
+.services__item {
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+.active-section .services__item {
+  opacity: 1;
+  opacity: 1;
+  opacity: 1;
+}
+
+.active-section .services__item:nth-child(1) {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.active-section .services__item:nth-child(2) {
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+
+.active-section .services__item:nth-child(3) {
+  -webkit-transition-delay: 0.9s;
+          transition-delay: 0.9s;
 }
 
 .services__icon::before {
@@ -360,6 +468,10 @@ body {
           justify-content: space-between;
 }
 
+.achievements__item {
+  text-align: center;
+}
+
 .achievements__value {
   color: #1c1f25;
   font-size: 60px;
@@ -371,7 +483,6 @@ body {
 }
 
 .page {
-  position: relative;
   counter-reset: item;
 }
 
@@ -506,6 +617,33 @@ body {
   display: -ms-grid;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.advantages__item {
+  -webkit-transition: opacity 1s;
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+.active-section .advantages__item {
+  opacity: 1;
+  opacity: 1;
+  opacity: 1;
+}
+
+.active-section .advantages__item:nth-child(1) {
+  -webkit-transition-delay: 0.3s;
+          transition-delay: 0.3s;
+}
+
+.active-section .advantages__item:nth-child(2) {
+  -webkit-transition-delay: 0.6s;
+          transition-delay: 0.6s;
+}
+
+.active-section .advantages__item:nth-child(3) {
+  -webkit-transition-delay: 0.9s;
+          transition-delay: 0.9s;
 }
 
 .advantages__icon:not(:last-child) {
@@ -679,6 +817,9 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .screen-10__image {
